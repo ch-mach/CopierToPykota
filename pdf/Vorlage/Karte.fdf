@@ -1,0 +1,11 @@
+%FDF-1.2
+1 0 obj<</FDF<< /Fields[
+<</T(Kuerzel)/V(xxx)>>
+<</T(IDSonst)/V(sID)>>
+<</T(IDVerw)/V(vID)>>
+% And lots more lines like these.
+] >> >>
+endobj
+trailer
+<</Root 1 0 R>>
+%%EOF

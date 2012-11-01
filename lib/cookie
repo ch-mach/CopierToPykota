@@ -1,0 +1,17 @@
+#!/bin/bash
+# erzeugen der Cookies
+# Übergabeparameter $1 ID des Kopierers
+# auslesen global/printer
+
+while read line; do 
+  if [[ -z ${line###*} ]]; then continue; fi; declare $(echo $line|cut -d= -f1)="$(echo $line|cut -d= -f 2-)"
+done < allgemein.cfg
+while read line; do 
+  if [[ -z ${line###*} ]]; then continue; fi; declare $(echo $line|cut -d= -f1)="$(echo $line|cut -d= -f 2-)"
+done < $DIR_CFG/$1.cfg
+
+# anlegen des benutzers
+echo $(echo $CMD_COOKIE | sed "s/<ADMIN_USER>/$ADMIN_USER/g;s/<ADMIN_PWD>/$ADMIN_PWD/g;s/<IP>/$IP/g;s/<ID>/$1/g;s#<TMPDIR>#$TMPDIR#g")
+# schreiben ins log
+echo Cookie für $1 angelegt
+

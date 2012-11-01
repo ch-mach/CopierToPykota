@@ -1,0 +1,13 @@
+#!/bin/bash
+# überprüft, ob die für die Erstellung von PDF-Karten notwendigen Vorlagen vorhanden sind
+# gibt 0 bei Erfolg und 1 bei Misserfolg
+
+while read line; do 
+  if [[ -z ${line###*} ]]; then continue; fi; declare $(echo $line|cut -d= -f1)="$(echo $line|cut -d= -f 2-)"
+done < allgemein.cfg
+
+if [[ -a $DIR_PDF/Vorlage/Karte.pdf && -a $DIR_PDF/Vorlage/Karte.fdf ]]; then
+  echo 0;
+else 
+  echo 1;
+fi
